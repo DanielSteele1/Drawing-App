@@ -9,11 +9,11 @@ function Canvas() {
         const ctx = canvas.getContext("2d");
         const menu = document.querySelector(".menu");
 
-        const canvasOffsetY = canvas.offsetX;
-        const canvasOffsetX = canvas.offsetY;
+        const canvasOffsetY = canvas.offsetLeft;
+        const canvasOffsetX = canvas.offsetTop;
 
-        canvas.width = window.innerWidth - canvas.offsetX;
-        canvas.height = window.innerHeight - canvas.offsetY;
+        canvas.width = window.innerWidth - canvasOffsetX;
+        canvas.height = window.innerHeight - canvasOffsetY;
 
         //draw state
         let isPainting = false;
@@ -36,7 +36,7 @@ function Canvas() {
 
         menu.addEventListener ('change', e => {
             
-            if (e.target.id == 'clear') {
+            if (e.target.id == 'color-picker') {
                 ctx.strokeStyle = e.target.value;
             }
         });
