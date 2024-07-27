@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -70,12 +71,12 @@
 }
 
 #canvas {
-    background-color: white;
-    opacity: 1.0;
-    border: 1px solid black;
-    cursor: crosshair;
-    height: 780px;
-    width: 780px;
+  background-color: white;
+  opacity: 1.0;
+  border: 1px solid black;
+  cursor: crosshair;
+  height: 780px;
+  width: 780px;
 }
 
 
@@ -87,20 +88,67 @@
 
 .content-container {
 
-display:grid;
-grid-template-columns: 25% auto;
-justify-content: center;
+  display: grid;
+  grid-template-columns: 25% auto;
+  justify-content: center;
 
 }
 
 .menu-items {
 
-  display:grid;
-  grid-template: rows;
-  
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 10px;
+  justify-content: center;
+  align-items: start;
+  height: 300px;
+
+}
+
+.menu-item {
+
+  height: fit-content;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #3a835b;
+  color: white;
+  font-size: 20px;
+  font-style: bold;
+  text-align: center;
+
 }
 
 
+.menu-options-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center; /* Center the items horizontally */
+  gap: 20px; /* Adjust the gap between the items */
+  background-color: #3a835b;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
+
+.menu-options {
+  padding: 10px;
+  background-color: #3a835b;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+#color-picker {
+
+  height: 40px;
+  width: 100px;
+  margin: 0px auto;
+}
 
 
 .footer {
@@ -114,6 +162,3 @@ justify-content: center;
   position: fixed;
   bottom: 0;
 }
-
-
-
