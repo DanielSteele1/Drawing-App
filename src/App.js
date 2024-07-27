@@ -1,6 +1,6 @@
 import './App.css';
-
-
+import Canvas from './canvas.js';
+import Menu from './menu.js';
 
 
 
@@ -13,10 +13,16 @@ function App() {
 
       <div className="content-container">
 
-      <div className="menu"></div>
+        <Menu />
 
-        <div className="canvas"></div>
+        <div className="canvas-container">
+          <div className="canvas">
 
+            <Canvas />
+
+
+          </div>
+        </div>
       </div>
 
       <div className="footer"></div>

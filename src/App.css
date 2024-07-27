@@ -69,6 +69,16 @@
 
 }
 
+#canvas {
+    background-color: white;
+    opacity: 1.0;
+    border: 1px solid black;
+    cursor: crosshair;
+    height: 780px;
+    width: 780px;
+}
+
+
 .menu,
 .canvas {
 
@@ -83,6 +93,14 @@ justify-content: center;
 
 }
 
+.menu-items {
+
+  display:grid;
+  grid-template: rows;
+  
+}
+
+
 
 
 .footer {
@@ -96,4 +114,6 @@ justify-content: center;
   position: fixed;
   bottom: 0;
 }
+
+
 
