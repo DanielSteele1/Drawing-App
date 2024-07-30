@@ -10,7 +10,6 @@ function App() {
 
       <div className="navigation"></div>
 
-
       <div className="content-container">
 
         <Menu />

@@ -72,16 +72,13 @@
 
 #canvas {
   background-color: white;
-  opacity: 1.0;
   border: 1px solid black;
   cursor: crosshair;
   height: 780px;
   width: 780px;
 }
 
-
-.menu,
-.canvas {
+.menu {
 
   opacity: 0.5;
 }
@@ -143,11 +140,12 @@
 }
 
 
-#color-picker {
+#stroke {
 
   height: 40px;
   width: 100px;
   margin: 0px auto;
+  background-color: none;
 }
 
 
