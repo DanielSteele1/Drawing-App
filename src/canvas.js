@@ -39,6 +39,8 @@ function Canvas() {
 
             if (e.target.id === 'lineWidth') {
                 lineWidth = e.target.value;
+                console.log(`line Width set to ${lineWidth}`);
+
             }
         });
 
@@ -48,13 +50,15 @@ function Canvas() {
                 return;
             }
 
+            const rect = canvas.getBoundingClientRect();
             ctx.lineWidth = lineWidth;
             ctx.lineCap = "round";
 
-            ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+
+            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
             ctx.stroke();
             ctx.beginPath();
-            ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+            ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
 
         }
 
@@ -62,8 +66,10 @@ function Canvas() {
 
         canvas.addEventListener('mousedown', (e) => {
             isPainting = true;
-            startY = e.offsetY;
-            startX = e.offsetX;
+
+            const rect = canvas.getBoundingClientRect();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
         });
 
         canvas.addEventListener('mouseup', e => {

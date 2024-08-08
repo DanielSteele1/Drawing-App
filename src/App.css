@@ -67,6 +67,7 @@
   background-color: #333;
   justify-content: center;
   align-items: center;
+  position: relative;
 
 }
 
@@ -76,6 +77,8 @@
   cursor: crosshair;
   height: 780px;
   width: 780px;
+  position: relative;
+
 }
 
 .menu {
