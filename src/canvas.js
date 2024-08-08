@@ -40,7 +40,6 @@ function Canvas() {
 
             if (e.target.id === 'lineWidth') {
                 lineWidth = e.target.value;
-                
 
             }
         });
