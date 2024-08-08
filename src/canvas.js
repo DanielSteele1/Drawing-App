@@ -8,19 +8,20 @@ function Canvas() {
         const menu = document.querySelector(".menu");
         const ctx = canvas.getContext("2d");
 
-        const canvasOffsetX = canvas.offsetLeft;
-        const canvasOffsetY = canvas.offsetTop;
 
-        canvas.width = window.innerWidth - canvasOffsetX;
-        canvas.height = window.innerHeight - canvasOffsetY;
+        const resizeCanvas = () => {
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        };
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
         //draw state
         let isPainting = false;
         //linewidth
-        let lineWidth = 5;
-        //canvas co-ords
-        let startY;
-        let startX;
+        let lineWidth = 10;
 
         // clear button 
 
@@ -39,7 +40,7 @@ function Canvas() {
 
             if (e.target.id === 'lineWidth') {
                 lineWidth = e.target.value;
-                console.log(`line Width set to ${lineWidth}`);
+                
 
             }
         });
@@ -54,11 +55,15 @@ function Canvas() {
             ctx.lineWidth = lineWidth;
             ctx.lineCap = "round";
 
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+            ctx.lineTo(x, y);
+
             ctx.stroke();
             ctx.beginPath();
-            ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+
+            ctx.moveTo(x, y);
 
         }
 
@@ -84,7 +89,7 @@ function Canvas() {
 
     return (
 
-        <canvas ref={canvasRef} id="canvas">  </canvas>
+        <canvas ref={canvasRef} id="canvas"></canvas>
 
     );
 }
