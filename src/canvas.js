@@ -8,7 +8,6 @@ function Canvas() {
         const menu = document.querySelector(".menu");
         const ctx = canvas.getContext("2d");
 
-
         const resizeCanvas = () => {
             const rect = canvas.getBoundingClientRect();
             canvas.width = rect.width;

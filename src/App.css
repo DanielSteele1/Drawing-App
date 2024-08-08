@@ -82,26 +82,35 @@
 }
 
 .menu {
-
   opacity: 0.5;
+  height: fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #1e1f1e;
+  color: white;
 }
 
 .content-container {
 
-  display: grid;
-  grid-template-columns: 25% auto;
-  justify-content: center;
+  display: flex;
+  width: 60%;
+  margin: 10px auto;
+  justify-content: space-between;
+  align-items: flex-start;
+
 
 }
 
 .menu-items {
 
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 10px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: start;
-  height: 300px;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  margin: 0 auto;
 
 }
 
@@ -109,9 +118,8 @@
 
   height: fit-content;
   width: fit-content;
-  margin: 10px auto;
+  margin: 0 auto;
   padding: 10px;
-  background-color: #3a835b;
   color: white;
   font-size: 20px;
   font-style: bold;
@@ -119,29 +127,40 @@
 
 }
 
-
 .menu-options-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center; /* Center the items horizontally */
-  gap: 20px; /* Adjust the gap between the items */
-  background-color: #3a835b;
-  font-size: 20px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  background-color: #221c1c;
   color: white;
-  font-weight: bold;
   text-align: center;
   align-items: center;
+  position: relative;
 }
 
 .menu-options {
+  height: fit-content;
+  width: fit-content;
   padding: 10px;
-  background-color: #3a835b;
+  background-color: #1e1f1e;
   color: white;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
   text-align: center;
+  border: none;
+  opacity: 1.0;
+  position: relative;
+
 }
 
+.menu-options:hover {
+  font: white;
+  text-decoration: underline;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+}
 
 #stroke {
 
