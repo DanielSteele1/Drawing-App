@@ -18,6 +18,7 @@ function Menu() {
         };
     }, []);
 
+
     return (
 
         <div className="menu">
@@ -34,16 +35,14 @@ function Menu() {
                 <div className="menu-item">
                     Choose a brush color:
                     <br></br>
-                    <br></br>
 
                     <input type="color" id="stroke" /> </div>
 
                 <div className="menu-item">
-                    Line Width
+                    Line Width:  <span id="value"></span>
                     <br></br>
                     <input type="range" id="lineWidth" min="1" max="50" default="1" />
                     <br></br>
-                    <span id="value">5</span>
 
                 </div>
 
@@ -55,7 +54,6 @@ function Menu() {
                 </div>
 
                 <div className="menu-item">
-                    ???
                     <br></br>
                     <input type="range" id="line-width" min="1" max="5" />
 
@@ -73,11 +71,9 @@ function Menu() {
                     <br></br>
                     <input type="range" id="lineWidth" min="1" max="50" default="1" />
                     <br></br>
-                    <span id="value">5</span>
+                    <span id="value"></span>
 
                 </div>
-
-
 
             </div>
 

@@ -38,7 +38,6 @@
   }
 }
 
-
 .navigation {
 
   height: 70px;
@@ -48,35 +47,13 @@
 
 }
 
-.menu {
-
-  display: grid;
-  height: 800px;
-  width: 70%;
-  background-color: #333;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.canvas {
-
-  display: grid;
-  height: 800px;
-  width: 800px;
-  background-color: #333;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-}
 
 #canvas {
   background-color: white;
   border: 1px solid black;
   cursor: crosshair;
-  height: 780px;
-  width: 780px;
+  height: 800px;
+  width: 1200px;
   position: relative;
 
 }
@@ -94,11 +71,10 @@
 .content-container {
 
   display: flex;
-  width: 60%;
-  margin: 10px auto;
+  width: 80%;
+  margin: 0px auto;
   justify-content: space-between;
   align-items: flex-start;
-
 
 }
 
@@ -164,12 +140,12 @@
 
 #stroke {
 
-  height: 40px;
-  width: 100px;
-  margin: 0px auto;
+  height: 35px;
+  width: 150px;
+  margin: 10px auto;
   background-color: none;
+  border: none;
 }
-
 
 .footer {
 
