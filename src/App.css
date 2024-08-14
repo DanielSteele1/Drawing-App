@@ -1,6 +1,6 @@
 body {
 
-background-color: rgb(39, 36, 36);
+  background-color: rgb(39, 36, 36);
 
 }
 
@@ -75,7 +75,7 @@ background-color: rgb(39, 36, 36);
 
 .menu-options-container {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   background-color: #ffffff;
   text-align: center;
@@ -106,29 +106,26 @@ background-color: rgb(39, 36, 36);
   border: none;
 }
 
-
 .shape-options {
 
-height: 50px;
-width: 65px;
-margin: 0 auto;
-background-color: white;
-border: 2px solid rgb(103, 191, 218);
-border-radius: 10px;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  height: 50px;
+  width: 65px;
+  margin: 0 auto;
+  background-color: white;
+  border: 2px solid rgb(103, 191, 218);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
 }
 
 .shape-options:hover {
 
-background-color:rgb(103, 191, 218);
-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
-transition: 0.2s;
-cursor: pointer;
+  background-color: rgb(103, 191, 218);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  cursor: pointer;
 
 }
-
-
 
 #stroke {
 
