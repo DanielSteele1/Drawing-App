@@ -14,8 +14,10 @@ function Menu() {
         return () => {
             lineWidth.removeEventListener("input", (event) => {
                 value.textContent = event.target.value;
+
             });
         };
+
     }, []);
 
 
@@ -23,56 +25,64 @@ function Menu() {
 
         <div className="menu">
 
-
-            <div className="menu-options-container">
-                <button className="menu-options" id="clear"> Clear </button>
-                <button className="menu-options" id="reset">Reset Settings</button>
-                <button className="menu-options" id="save">Save</button>
-            </div>
-
             <div className="menu-items">
 
-                <div className="menu-item">
-                    Choose a brush color:
-                    <br></br>
+                <label> Brush Options </label>
 
+                <div className="menu-item">
+                    <label> Color: </label>
+                    <br></br>
                     <input type="color" id="stroke" /> </div>
 
                 <div className="menu-item">
-                    Line Width:  <span id="value"></span>
+                    <label> Line Width: </label>  <span id="value"></span>
                     <br></br>
                     <input type="range" id="lineWidth" min="1" max="50" default="1" />
                     <br></br>
+                </div>
+
+                <div className="menu-item">
+                    <label> Shapes </label>
+                    <br></br>
+                    <div className="menu-item">
+                        <button class="shape-options" id="square"> Square </button>
+                    </div>
+
+                    <div className="menu-item">
+                        <button class="shape-options" id="circle"> Circle </button>
+                    </div>
+
+                    <div className="menu-item">
+                        <button class="shape-options" id="triangle"> Triangle </button>
+                    </div>
 
                 </div>
 
                 <div className="menu-item">
-                    Stroke
+                    <label> Eraser </label>
                     <br></br>
-                    <input type="range" id="stroke" min="1" max="5" />
+                    <input type="checkbox" id="checkbox" />
+
+                    <label> Fill Colour </label>
+                    <br></br>
+                    <input type="checkbox" id="checkbox" />
 
                 </div>
 
                 <div className="menu-item">
-                    <br></br>
-                    <input type="range" id="line-width" min="1" max="5" />
 
                 </div>
 
                 <div className="menu-item">
-                    ???
-                    <br></br>
-                    <input type="range" id="line-width" min="1" max="5" />
-
+                    <button id="clear"> Clear Canvas </button>
                 </div>
 
                 <div className="menu-item">
-                    Line Width
-                    <br></br>
-                    <input type="range" id="lineWidth" min="1" max="50" default="1" />
-                    <br></br>
-                    <span id="value"></span>
+                    <button id="save"> Save As Image </button>
+                </div>
 
+                <div className="menu-item">
+                    <button id="save"> Save As Image </button>
                 </div>
 
             </div>
