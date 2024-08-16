@@ -45,15 +45,19 @@ function Menu() {
                     <label> Shapes </label>
                     <br></br>
                     <div className="menu-item">
-                        <button class="shape-options" id="square"> Square </button>
+                        <button class="shape-options" id="square"> <img src="square.png" /> </button>
                     </div>
 
                     <div className="menu-item">
-                        <button class="shape-options" id="circle"> Circle </button>
+                        <button class="shape-options" id="circle"> <img src="circle.png" /> </button>
                     </div>
 
                     <div className="menu-item">
-                        <button class="shape-options" id="triangle"> Triangle </button>
+                        <button class="shape-options" id="triangle"> <img src="triangle.png" /> </button>
+                    </div>
+
+                    <div className="menu-item">
+                        <button class="shape-options" id="line"> <img src="line.png" /> </button>
                     </div>
 
                 </div>
@@ -74,15 +78,11 @@ function Menu() {
                 </div>
 
                 <div className="menu-item">
-                    <button id="clear"> Clear Canvas </button>
+                    <button class="menu-button" id="clear"> Clear Canvas </button>
                 </div>
 
                 <div className="menu-item">
-                    <button id="save"> Save As Image </button>
-                </div>
-
-                <div className="menu-item">
-                    <button id="save"> Save As Image </button>
+                    <button clas="menu-button" id="save"> Save As Image </button>
                 </div>
 
             </div>
