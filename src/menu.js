@@ -32,14 +32,25 @@ function Menu() {
                 <div className="menu-item">
                     <label> Color: </label>
                     <br></br>
-                    <input type="color" id="stroke" /> </div>
+                    <input type="color" class="color" id="stroke" />
+                    <br></br>
+                    <label> Fill Colour </label>
+                    <br></br>
+                    <input type="color" class="color" id="fill" />
+                    <br></br>
 
-                <div className="menu-item">
                     <label> Line Width: </label>  <span id="value"></span>
                     <br></br>
-                    <input type="range" id="lineWidth" min="1" max="50" default="1" />
+                    <input type="range" id="lineWidth" min="1" max="50" defaultValue="15" />
+                    <br></br>
+                    <input type="checkbox" class="checkbox" id="eraser" />
+                    <label> Eraser </label>
+                    <br></br>
+                    <input type="checkbox" class="checkbox" id="Fill-toggle" />
+                    <label> Fill </label>
                     <br></br>
                 </div>
+
 
                 <div className="menu-item">
                     <label> Shapes </label>
@@ -63,26 +74,9 @@ function Menu() {
                 </div>
 
                 <div className="menu-item">
-                    <label> Eraser </label>
-                    <br></br>
-                    <input type="checkbox" id="checkbox" />
-
-                    <label> Fill Colour </label>
-                    <br></br>
-                    <input type="checkbox" id="checkbox" />
-
-                </div>
-
-                <div className="menu-item">
-
-                </div>
-
-                <div className="menu-item">
                     <button class="menu-button" id="clear"> Clear Canvas </button>
-                </div>
-
-                <div className="menu-item">
-                    <button clas="menu-button" id="save"> Save As Image </button>
+                    <br></br>
+                    <button class="menu-button" id="clear"> Save As Image </button>
                 </div>
 
             </div>
