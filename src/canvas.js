@@ -83,7 +83,34 @@ function Canvas() {
 
         canvas.addEventListener('mousemove', draw);
 
+        const saveButton = document.getElementById("save");
+
+        saveButton.addEventListener("click", () => {
+
+            const dataURL = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+
+            link.href = dataURL;
+            link.download = 'image.png';
+            link.click();
+
+        });
+
+
+        const fillToggle = document.getElementById("Fill-toggle");
+
+        fillToggle.addEventListener("change", () => {
+            
+            const fillColor = document.getElementById('fill').value;
+            ctx.fillStyle = fillColor;
+
+            ctx.fillRect(0, 0 , canvas.width, canvas.height);
+        });
+
+
     }, []);
+
+
 
     return (
 

@@ -18,12 +18,18 @@ function Menu() {
             });
         };
 
+
     }, []);
 
 
     return (
 
         <div className="menu">
+
+            <div className="progress-buttons">
+                <button class="undo-button" id="clear"> Undo </button>
+                <button class="redo-button" id="save"> Redo </button>
+            </div>
 
             <div className="menu-items">
 
@@ -52,22 +58,22 @@ function Menu() {
                 </div>
 
 
-                <div className="menu-item">
+                <div className="shapes">
                     <label> Shapes </label>
                     <br></br>
-                    <div className="menu-item">
+                    <div className="shape-item">
                         <button class="shape-options" id="square"> <img src="square.png" /> </button>
                     </div>
 
-                    <div className="menu-item">
+                    <div className="shape-item">
                         <button class="shape-options" id="circle"> <img src="circle.png" /> </button>
                     </div>
 
-                    <div className="menu-item">
+                    <div className="shape-item">
                         <button class="shape-options" id="triangle"> <img src="triangle.png" /> </button>
                     </div>
 
-                    <div className="menu-item">
+                    <div className="shape-item">
                         <button class="shape-options" id="line"> <img src="line.png" /> </button>
                     </div>
 
@@ -76,7 +82,9 @@ function Menu() {
                 <div className="menu-item">
                     <button class="menu-button" id="clear"> Clear Canvas </button>
                     <br></br>
-                    <button class="menu-button" id="clear"> Save As Image </button>
+                    <button class="menu-button" id="save"> Save As Image </button>
+                    <br></br>
+
                 </div>
 
             </div>

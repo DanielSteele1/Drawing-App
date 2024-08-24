@@ -30,7 +30,7 @@ body {
   height: fit-content;
   width: fit-content;
   margin: 0 auto;
-  padding: 10px;
+  padding: 15px;
   background-color: #ffffff;
   color: black;
   border-radius: 5px;
@@ -46,6 +46,26 @@ body {
   align-items: flex-start;
 
 }
+
+.shapes {
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.shape-item {
+  margin: 0 auto;
+  margin: 5px;
+
+}
+
 
 .menu-items {
 
@@ -117,6 +137,7 @@ body {
 
 }
 
+
 .shape-options:hover {
 
   background-color: rgb(103, 191, 218);
@@ -174,6 +195,40 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   float: left;
+
+}
+
+
+.progress-buttons {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+
+.redo-button, .undo-button {
+
+  height: fit-content;
+  width: fit-content;
+  padding: 8px;
+  margin: 1px auto;
+  font-size: 15px;
+  background-color: rgb(21, 106, 233);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 10px;
+
+
+}
+
+.redo-button:hover, .undo-button:hover {
+
+  background-color: rgb(48, 109, 199);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 
 }
 
