@@ -83,22 +83,24 @@ function Canvas() {
 
         canvas.addEventListener('mousemove', draw);
 
+     
         const saveButton = document.getElementById("save");
-
+        if (saveButton) {
         saveButton.addEventListener("click", () => {
 
             const dataURL = canvas.toDataURL('image/png');
             const link = document.createElement('a');
+            console.log(dataURL);
 
             link.href = dataURL;
-            link.download = 'image.png';
+            link.download = 'saved-image.png';
             link.click();
 
         });
-
+    }
 
         const fillToggle = document.getElementById("Fill-toggle");
-
+       if (fillToggle) {
         fillToggle.addEventListener("change", () => {
             
             const fillColor = document.getElementById('fill').value;
@@ -106,11 +108,58 @@ function Canvas() {
 
             ctx.fillRect(0, 0 , canvas.width, canvas.height);
         });
+    }
 
+
+        const Rect = document.getElementById("square");
+        Rect.addEventListener("click", () => { 
+
+            
+            const Rect = document.getElementById("square");
+            ctx.beginPath();
+            ctx.rect(starY, startX, x - startX, y - startY);
+            ctx.stroke();
+            ctx.fill();
+
+        });
+
+        const Tri = document.getElementById("triangle");
+        Rect.addEventListener("click", () => { 
+
+            
+            const Rect = document.getElementById("triangle");
+            ctx.beginPath();
+            ctx.rect(starY, startX, x - startX, y - startY);
+            ctx.stroke();
+            ctx.fill();
+
+        });    
+        
+        const circle = document.getElementById("circle");
+        Rect.addEventListener("click", () => { 
+
+            
+            const Rect = document.getElementById("circle");
+            ctx.beginPath();
+            ctx.rect(starY, startX, x - startX, y - startY);
+            ctx.stroke();
+            ctx.fill();
+
+        });        
+        
+        const line = document.getElementById("line");
+        Rect.addEventListener("click", () => { 
+
+            
+            const Rect = document.getElementById("line");
+            ctx.beginPath();
+            ctx.rect(starY, startX, x - startX, y - startY);
+            ctx.stroke();
+            ctx.fill();
+
+        });
 
     }, []);
-
-
 
     return (
 

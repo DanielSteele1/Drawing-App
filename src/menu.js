@@ -18,6 +18,7 @@ function Menu() {
             });
         };
 
+        
 
     }, []);
 
@@ -27,8 +28,8 @@ function Menu() {
         <div className="menu">
 
             <div className="progress-buttons">
-                <button class="undo-button" id="clear"> Undo </button>
-                <button class="redo-button" id="save"> Redo </button>
+                <button class="undo-button" id="undo"> Undo </button>
+                <button class="redo-button" id="redo"> Redo </button>
             </div>
 
             <div className="menu-items">
@@ -83,7 +84,6 @@ function Menu() {
                     <button class="menu-button" id="clear"> Clear Canvas </button>
                     <br></br>
                     <button class="menu-button" id="save"> Save As Image </button>
-                    <br></br>
 
                 </div>
 
