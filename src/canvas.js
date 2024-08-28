@@ -23,6 +23,7 @@ function Canvas() {
         //linewidth
         let lineWidth = 10;
         let canvasStack =  [];
+        let points = [];
 
         const draw = (e) => {
 
@@ -84,7 +85,7 @@ function Canvas() {
             ctx.stroke();
             ctx.beginPath(); // end line
             
-             canvasStack
+             canvasStack.push(points);
         });
 
         canvas.addEventListener('mousemove', draw);
