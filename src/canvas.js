@@ -1,3 +1,4 @@
+import path from 'path';
 import React, { useEffect, useRef } from 'react';
 
 function Canvas() {
@@ -21,27 +22,7 @@ function Canvas() {
         let isPainting = false;
         //linewidth
         let lineWidth = 10;
-
-        // clear button 
-
-        menu.addEventListener('click', e => {
-
-            if (e.target.id === 'clear') {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }
-        });
-
-        menu.addEventListener('change', e => {
-
-            if (e.target.id === 'stroke') {
-                ctx.strokeStyle = e.target.value;
-            }
-
-            if (e.target.id === 'lineWidth') {
-                lineWidth = e.target.value;
-
-            }
-        });
+        let canvasStack =  [];
 
         const draw = (e) => {
 
@@ -65,6 +46,27 @@ function Canvas() {
 
         }
 
+        // clear button 
+
+        menu.addEventListener('click', e => {
+
+            if (e.target.id === 'clear') {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        });
+
+        menu.addEventListener('change', e => {
+
+            if (e.target.id === 'stroke') {
+                ctx.strokeStyle = e.target.value;
+            }
+
+            if (e.target.id === 'lineWidth') {
+                lineWidth = e.target.value;
+
+            }
+        });
+
         // when mousedown = draw. when mouseup - stop drawing
 
         canvas.addEventListener('mousedown', (e) => {
@@ -73,12 +75,16 @@ function Canvas() {
             const rect = canvas.getBoundingClientRect();
             ctx.beginPath();
             ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+            canvasStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));   // store each stroke in an array. array can be then be used for undo/redo.
+            console.log(canvasStack);
         });
 
         canvas.addEventListener('mouseup', e => {
             isPainting = false;
             ctx.stroke();
             ctx.beginPath(); // end line
+            
+             canvasStack
         });
 
         canvas.addEventListener('mousemove', draw);
@@ -111,55 +117,49 @@ function Canvas() {
     }
 
 
-        const Rect = document.getElementById("square");
-        Rect.addEventListener("click", () => { 
-
-            
-            const Rect = document.getElementById("square");
-            ctx.beginPath();
-            ctx.rect(starY, startX, x - startX, y - startY);
-            ctx.stroke();
-            ctx.fill();
-
-        });
-
-        const Tri = document.getElementById("triangle");
-        Rect.addEventListener("click", () => { 
-
-            
-            const Rect = document.getElementById("triangle");
-            ctx.beginPath();
-            ctx.rect(starY, startX, x - startX, y - startY);
-            ctx.stroke();
-            ctx.fill();
-
-        });    
-        
-        const circle = document.getElementById("circle");
-        Rect.addEventListener("click", () => { 
-
-            
-            const Rect = document.getElementById("circle");
-            ctx.beginPath();
-            ctx.rect(starY, startX, x - startX, y - startY);
-            ctx.stroke();
-            ctx.fill();
-
-        });        
-        
-        const line = document.getElementById("line");
-        Rect.addEventListener("click", () => { 
-
-            
-            const Rect = document.getElementById("line");
-            ctx.beginPath();
-            ctx.rect(starY, startX, x - startX, y - startY);
-            ctx.stroke();
-            ctx.fill();
-
-        });
-
     }, []);
+
+
+     canvas.addEventListener('undo', e => {
+
+
+        function DrawStack() {
+
+            // blank slate - delete everything
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+            // redraw previous strokes in array
+
+            canvasStack.forEach(path => {
+         
+                ctx.moveTo(path[0].x, path[0].y);
+
+                path.forEach(point => {
+                    ctx.beginPath();
+
+                    ctx.moveTo(path[0].x, path[0].y);
+                    for(let i = 1; i < path.length; i++) {
+                        ctx.lineTo(path[i].x, path[i].y);
+                    }
+                    ctx.stroke();
+                });
+
+
+            });
+        }
+
+
+
+
+
+
+     });
+
+     canvas.addEventListener('redo', e => {
+        
+     });
+
 
     return (
 
