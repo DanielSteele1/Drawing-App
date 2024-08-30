@@ -23,6 +23,7 @@ function Canvas() {
         let lineWidth = 10;
 
         const strokes = [];
+        const redoStack = [];
         let currentStroke = [];
 
 
@@ -50,28 +51,67 @@ function Canvas() {
 
         };
 
-        const undo = () => {
-            strokes.pop(); // Remove the last stroke
+        // const undo = () => {
+        //     strokes.pop(); // Remove the last stroke
+        //     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
+        //     strokes.forEach(strokes => {
+        //         ctx.beginPath();
+        //         strokes.forEach(point => {
+        //             ctx.lineWidth = point.lineWidth;
+        //             ctx.strokeStyle = point.strokeStyle;
+        //             ctx.lineTo(point.x, point.y);
+        //             ctx.stroke();
+        //             ctx.beginPath();
+        //             ctx.moveTo(point.x, point.y);
+        //         });
+        //     });
+        //     ctx.beginPath(); // Reset the path
+        // };
+
+        const redrawCanvas = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
-            strokes.forEach(strokes => {
-                ctx.beginPath();
-                strokes.forEach(point => {
-                    ctx.lineWidth = point.lineWidth;
-                    ctx.strokeStyle = point.strokeStyle;
-                    ctx.lineTo(point.x, point.y);
-                    ctx.stroke();
+            strokes.forEach(stroke => {
+                if (Array.isArray(stroke)) { // Ensure stroke is an array
                     ctx.beginPath();
-                    ctx.moveTo(point.x, point.y);
-                });
+                    stroke.forEach(point => {
+                        ctx.lineWidth = point.lineWidth;
+                        ctx.strokeStyle = point.strokeStyle;
+                        ctx.lineTo(point.x, point.y);
+                        ctx.stroke();
+                        ctx.beginPath();
+                        ctx.moveTo(point.x, point.y);
+                    });
+                }
             });
             ctx.beginPath(); // Reset the path
         };
 
+        const undo = () => {
+
+            if (strokes.length === 0 ) return;
+            const lastStroke = strokes.pop(); //remove last stroke
+            redoStack.push(lastStroke); // add it to the redo stack to be used later
+            redrawCanvas();
+        };
+
+        const redo = () => {
+
+            if(redoStack.length === 0) return;
+            const lastUndoneStroke = redoStack.pop();  //get the last undone stroke
+            strokes.push(lastUndoneStroke);  // add it back into the strokes
+            redrawCanvas();
+        };
 
         // undo/redo buttons
         const undoButton = document.getElementById("undo");
         if (undoButton) {
             undoButton.addEventListener("click", undo);
+        }
+
+        const redoButton = document.getElementById("redo");
+        if(redoButton) {
+
+            redoButton.addEventListener("click", redo);
         }
 
         // clear button 
@@ -80,7 +120,8 @@ function Canvas() {
 
             if (e.target.id === 'clear') {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                strokes.length = 0; // clear array
+                strokes.length = 0;
+                redoStack.legnth = 0; // clear arrays
             }
         });
 
