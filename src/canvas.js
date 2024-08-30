@@ -50,13 +50,12 @@ function Canvas() {
 
         };
 
-        //undo
         const undo = () => {
             strokes.pop(); // Remove the last stroke
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
-            strokes.forEach(stroke => {
+            strokes.forEach(strokes => {
                 ctx.beginPath();
-                stroke.forEach(point => {
+                strokes.forEach(point => {
                     ctx.lineWidth = point.lineWidth;
                     ctx.strokeStyle = point.strokeStyle;
                     ctx.lineTo(point.x, point.y);
@@ -68,30 +67,11 @@ function Canvas() {
             ctx.beginPath(); // Reset the path
         };
 
-        //redo 
-        const redo = () => {
 
-
-           
-
-
-
-
-
-
-
-        };
-
-        // undo/redo event listeners 
-
+        // undo/redo buttons
         const undoButton = document.getElementById("undo");
         if (undoButton) {
             undoButton.addEventListener("click", undo);
-        }
-
-        const redoButton = document.getElementById("redo");
-        if (redoButton) {
-            redoButton.addEventListener("click", redo);
         }
 
         // clear button 
