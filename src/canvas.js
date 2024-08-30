@@ -1,4 +1,3 @@
-import path from 'path';
 import React, { useEffect, useRef } from 'react';
 
 function Canvas() {
@@ -22,8 +21,10 @@ function Canvas() {
         let isPainting = false;
         //linewidth
         let lineWidth = 10;
-        let canvasStack =  [];
-        let points = [];
+
+        const strokes = [];
+        let currentStroke = [];
+
 
         const draw = (e) => {
 
@@ -38,6 +39,8 @@ function Canvas() {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
+            currentStroke.push({ x, y, lineWidth, strokeStyle: ctx.strokeStyle });
+
             ctx.lineTo(x, y);
 
             ctx.stroke();
@@ -45,14 +48,37 @@ function Canvas() {
 
             ctx.moveTo(x, y);
 
-        }
+        };
 
+        const undo = () => {
+            strokes.pop(); // Remove the last stroke
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
+            strokes.forEach(stroke => {
+                ctx.beginPath();
+                stroke.forEach(point => {
+                    ctx.lineWidth = point.lineWidth;
+                    ctx.strokeStyle = point.strokeStyle;
+                    ctx.lineTo(point.x, point.y);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(point.x, point.y);
+                });
+            });
+            ctx.beginPath(); // Reset the path
+        };
+
+        const undoButton = document.getElementById("undo");
+        if (undoButton) {
+            undoButton.addEventListener("click", undo);
+        }
+        
         // clear button 
 
         menu.addEventListener('click', e => {
 
             if (e.target.id === 'clear') {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+                strokes.length = 0; // clear array
             }
         });
 
@@ -72,94 +98,51 @@ function Canvas() {
 
         canvas.addEventListener('mousedown', (e) => {
             isPainting = true;
-
+            currentStroke = [];  // reset for the next current stroke
             const rect = canvas.getBoundingClientRect();
             ctx.beginPath();
             ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-            canvasStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));   // store each stroke in an array. array can be then be used for undo/redo.
-            console.log(canvasStack);
         });
 
         canvas.addEventListener('mouseup', e => {
             isPainting = false;
             ctx.stroke();
+            strokes.push(currentStroke); // save the current stroke - push to array
             ctx.beginPath(); // end line
-            
-             canvasStack.push(points);
+
         });
 
         canvas.addEventListener('mousemove', draw);
 
-     
         const saveButton = document.getElementById("save");
         if (saveButton) {
-        saveButton.addEventListener("click", () => {
+            saveButton.addEventListener("click", () => {
 
-            const dataURL = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            console.log(dataURL);
+                const dataURL = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                console.log(dataURL);
 
-            link.href = dataURL;
-            link.download = 'saved-image.png';
-            link.click();
-
-        });
-    }
-
-        const fillToggle = document.getElementById("Fill-toggle");
-       if (fillToggle) {
-        fillToggle.addEventListener("change", () => {
-            
-            const fillColor = document.getElementById('fill').value;
-            ctx.fillStyle = fillColor;
-
-            ctx.fillRect(0, 0 , canvas.width, canvas.height);
-        });
-    }
-
-
-    }, []);
-
-
-     canvas.addEventListener('undo', e => {
-
-
-        function DrawStack() {
-
-            // blank slate - delete everything
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-            // redraw previous strokes in array
-
-            canvasStack.forEach(path => {
-         
-                ctx.moveTo(path[0].x, path[0].y);
-
-                path.forEach(point => {
-                    ctx.beginPath();
-
-                    ctx.moveTo(path[0].x, path[0].y);
-                    for(let i = 1; i < path.length; i++) {
-                        ctx.lineTo(path[i].x, path[i].y);
-                    }
-                    ctx.stroke();
-                });
-
+                link.href = dataURL;
+                link.download = 'saved-image.png';
+                link.click();
 
             });
         }
 
+        const fillToggle = document.getElementById("Fill-toggle");
+        if (fillToggle) {
+            fillToggle.addEventListener("change", () => {
+
+                const fillColor = document.getElementById('fill').value;
+                ctx.fillStyle = fillColor;
+
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            });
+        }
+
+    }, []);
 
 
-
-
-
-     });
-
-     canvas.addEventListener('redo', e => {
-        
-     });
 
 
     return (
