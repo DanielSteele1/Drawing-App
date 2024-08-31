@@ -120,8 +120,8 @@ function Canvas() {
 
             if (e.target.id === 'clear') {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                strokes.length == 0;
-                redoStack.legnth == 0; // clear arrays
+                strokes.length = 0;
+                redoStack.legnth = 0; // clear arrays
             }
         });
 
