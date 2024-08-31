@@ -122,6 +122,7 @@ function Canvas() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 strokes.length = 0;
                 redoStack.legnth = 0; // clear arrays
+                currentStroke.length = 0;
             }
         });
 
