@@ -19,6 +19,9 @@ function Canvas() {
 
         //draw state
         let isPainting = false;
+        let startX, startY;
+        //current tool - default
+        let currentTool = 'draw';
         //linewidth
         let lineWidth = 10;
 
@@ -29,44 +32,68 @@ function Canvas() {
 
         const draw = (e) => {
 
-            if (!isPainting) {
-                return;
-            }
+            if (!isPainting) return;
 
             const rect = canvas.getBoundingClientRect();
-            ctx.lineWidth = lineWidth;
-            ctx.lineCap = "round";
-
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            currentStroke.push({ x, y, lineWidth, strokeStyle: ctx.strokeStyle });
+            if (currentTool === 'draw') {
 
-            ctx.lineTo(x, y);
+                ctx.lineWidth = lineWidth;
+                ctx.lineCap = "round";
+                currentStroke.push({ x, y, lineWidth, strokeStyle: ctx.strokeStyle });
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            };
+        };
 
-            ctx.stroke();
+
+        const drawShape = (e) => {
+            if (!isPainting) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            redrawCanvas();
+
             ctx.beginPath();
+            switch (currentTool) {
 
-            ctx.moveTo(x, y);
+                case 'square':
+                    ctx.rect(startX, startY, x - startX, x - startX);
+                    break;
+
+                case 'triangle':
+
+                    ctx.moveTo(startX,startY);
+                    ctx.lineTo(x, y);
+                    ctx.lineTo(startX - (x - startX), y);
+                    ctx.closePath();
+
+                    break;
+
+                case 'circle':
+
+                const radius = Math.sqrt(Math.pow(x - startX, 2) + Math.pow(y - startY, 2));
+                ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+                break;
+
+                default:
+                    break;
+            }
 
         };
 
-        // const undo = () => {
-        //     strokes.pop(); // Remove the last stroke
-        //     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
-        //     strokes.forEach(strokes => {
-        //         ctx.beginPath();
-        //         strokes.forEach(point => {
-        //             ctx.lineWidth = point.lineWidth;
-        //             ctx.strokeStyle = point.strokeStyle;
-        //             ctx.lineTo(point.x, point.y);
-        //             ctx.stroke();
-        //             ctx.beginPath();
-        //             ctx.moveTo(point.x, point.y);
-        //         });
-        //     });
-        //     ctx.beginPath(); // Reset the path
-        // };
+        // select each shape tool: 
+        document.getElementById("line").addEventListener("click", () => currentTool = 'draw');
+        document.getElementById("square").addEventListener("click", () => currentTool = 'square');
+        document.getElementById("triangle").addEventListener("click", () => currentTool = 'triangle');
+        document.getElementById("circle").addEventListener("click", () => currentTool = 'circle');
 
         const redrawCanvas = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
@@ -76,7 +103,11 @@ function Canvas() {
                     stroke.forEach(point => {
                         ctx.lineWidth = point.lineWidth;
                         ctx.strokeStyle = point.strokeStyle;
-                        ctx.lineTo(point.x, point.y);
+                        if (point.radius) {
+                            ctx.arc(point.x, point.y, point.radius, 0, 2 * Math.PI);
+                        } else {
+                            ctx.lineTo(point.x, point.y);
+                        }
                         ctx.stroke();
                         ctx.beginPath();
                         ctx.moveTo(point.x, point.y);
@@ -88,7 +119,7 @@ function Canvas() {
 
         const undo = () => {
 
-            if (strokes.length === 0 ) return;
+            if (strokes.length === 0) return;
             const lastStroke = strokes.pop(); //remove last stroke
             redoStack.push(lastStroke); // add it to the redo stack to be used later
             redrawCanvas();
@@ -96,7 +127,7 @@ function Canvas() {
 
         const redo = () => {
 
-            if(redoStack.length === 0) return;
+            if (redoStack.length === 0) return;
             const lastUndoneStroke = redoStack.pop();  //get the last undone stroke
             strokes.push(lastUndoneStroke);  // add it back into the strokes
             redrawCanvas();
@@ -109,7 +140,7 @@ function Canvas() {
         }
 
         const redoButton = document.getElementById("redo");
-        if(redoButton) {
+        if (redoButton) {
 
             redoButton.addEventListener("click", redo);
         }
@@ -185,9 +216,6 @@ function Canvas() {
         }
 
     }, []);
-
-
-
 
     return (
 
