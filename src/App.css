@@ -6,13 +6,13 @@ body {
 
 .navigation {
 
+  font-family: "Inconsolata", monospace;
   height: 50px;
   width: 100%;
   background-color: #333;
   margin-bottom: 30px;
 
 }
-
 
 #canvas {
   background-color: white;
@@ -27,12 +27,14 @@ body {
 
 .menu {
 
+  font-family: "Inconsolata", monospace;
+  font-size: 18px;
   height: fit-content;
   width: fit-content;
   margin: 0 auto;
-  padding: 15px;
-  background-color: #ffffff;
-  color: black;
+  padding: 20px;
+  color: rgb(9, 179, 9);
+  border: 2px solid rgb(9, 179, 9);
   border-radius: 5px;
 
 }
@@ -49,6 +51,7 @@ body {
 
 .shapes {
 
+  text-align:center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -85,7 +88,9 @@ body {
   width: fit-content;
   margin: 0 auto;
   padding: 10px;
-  color: black;
+  font-family: "Inconsolata", monospace;
+  color:rgb(5, 196, 5);
+
   font-size: 18px;
   font-style: bold;
   text-align: center;
@@ -96,7 +101,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
   text-align: center;
   align-items: center;
   position: relative;
@@ -106,7 +110,6 @@ body {
   height: fit-content;
   width: fit-content;
   padding: 10px;
-  background-color: #ffffff;
   font-size: 17px;
   font-weight: bold;
   text-align: center;
@@ -131,7 +134,7 @@ body {
   width: 65px;
   margin: 0 auto;
   background-color: white;
-  border: 2px solid rgb(103, 191, 218);
+  border: 2px solid rgb(9, 179, 9);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
@@ -162,6 +165,46 @@ body {
 
 }
 
+#lineWidth{
+
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none;
+  width: 100%;
+  height: 8px; /* Adjust the height as needed */
+  background: #ddd; /* Default background color */
+  outline: none;
+  color:rgb(5, 196, 5);
+  transition: opacity .2s;
+
+
+}
+
+#lineWidth::-moz-range-thumb {
+  width: 15px; 
+  height: 15px; 
+  background: black; 
+  border: 1px solid #000; 
+  border-radius: 50%; 
+  cursor: pointer; 
+}
+
+#lineWidth::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px; /* Adjust the height as needed */
+  background: rgb(5, 196, 5); /* Track color */
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #000; /* Border color */
+}
+
+#lineWidth::-moz-range-track {
+  width: 100%;
+  height: 8px; /* Adjust the height as needed */
+  background: rgb(5, 196, 5); /* Track color */
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #000; /* Border color */
+}
+
+
 .menu-button {
 
   height: 40px;
@@ -169,7 +212,7 @@ body {
   margin: 0px auto;
   padding: 10px;
   font-size: 17px;
-  background-color: rgb(21, 106, 233);
+  background-color: rgb(9, 179, 9);
   border: none;
   border-radius: 5px;
   color: white;
@@ -179,7 +222,7 @@ body {
 
 .menu-button:hover {
 
-  background-color: rgb(48, 109, 199);
+  background-color: rgb(14, 160, 38);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 
@@ -189,8 +232,7 @@ body {
 
   height: 20px;
   width: 50px;
-  background-color: white;
-  border: 2px solid rgb(103, 191, 218);
+  border: 2px solid rgb(9, 179, 9);
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
@@ -210,15 +252,16 @@ body {
 
 .redo-button, .undo-button {
 
+  font-family: "Inconsolata", monospace;
   height: fit-content;
   width: fit-content;
   padding: 8px;
   margin: 1px auto;
-  font-size: 15px;
-  background-color: rgb(21, 106, 233);
+  font-size: 17px;
+  background-color: rgb(9, 179, 9);
   border: none;
-  border-radius: 5px;
   color: white;
+  border-radius: 5px;
   margin-bottom: 10px;
 
 
@@ -226,7 +269,7 @@ body {
 
 .redo-button:hover, .undo-button:hover {
 
-  background-color: rgb(48, 109, 199);
+  background-color: rgb(14, 160, 38);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 
@@ -234,12 +277,13 @@ body {
 
 .footer {
 
-  height: 50px;
+  height: 40px;
+  margin: 10px auto;
+  font-size: 18px;
+  font-family: "Inconsolata", monospace;
   display: flex;
-  width: 100%;
-  margin-top: 10px;
+  width: 99%;
+  color: rgb(5, 196, 5);
   background-color: #333;
   justify-content: center;
-  position: fixed;
-  bottom: 0;
 }

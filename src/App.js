@@ -22,7 +22,10 @@ function App() {
         </div>
       </div>
 
-      <div className="footer"></div>
+      <div className="footer"> 
+
+        <p1> Website Created by Daniel Steele - Full Stack Developer | Visit my site! | Connect on LinkedIn! </p1>
+      </div>
 
     </div>
   );
