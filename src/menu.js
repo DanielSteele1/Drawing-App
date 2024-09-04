@@ -77,7 +77,6 @@ function Menu() {
                     <div className="shape-item">
                         <button class="shape-options" id="line"> <img src="line.png" /> </button>
                     </div>
-
                 </div>
 
                 <div className="menu-item">

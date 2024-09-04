@@ -4,6 +4,17 @@ body {
 
 }
 
+
+a {
+
+  font-family: "Inconsolata", monospace;
+  font-size: 18px;
+  color: rgb(5, 196, 5);
+  text-decoration: underline;
+
+
+}
+
 .navigation {
 
   font-family: "Inconsolata", monospace;
@@ -275,15 +286,40 @@ body {
 
 }
 
+.socials {
+
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 25px;
+  vertical-align:middle;
+}
+
+.footer-3 span, .footer-3 a {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .footer {
 
-  height: 40px;
-  margin: 10px auto;
+  display: flex;
+  height: 75px;
+  margin: 0px auto;
   font-size: 18px;
   font-family: "Inconsolata", monospace;
-  display: flex;
-  width: 99%;
+  padding: 10px;
   color: rgb(5, 196, 5);
   background-color: #333;
-  justify-content: center;
+  justify-content: space-between; 
+  align-items: center; 
+
 }
+
+.footer-1, .footer-2, .footer-3 {
+  flex:1;
+  margin: 10px;
+  padding: 10px;
+  vertical-align:middle;
+}
+
