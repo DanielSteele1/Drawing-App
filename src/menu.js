@@ -63,19 +63,19 @@ function Menu() {
                     <label> Shapes </label>
                     <br></br>
                     <div className="shape-item">
-                        <button class="shape-options" id="square"> <img src="square.png" /> </button>
+                        <button class="shape-options" id="square"> <img src="square_green (Custom).png" /> </button>
                     </div>
 
                     <div className="shape-item">
-                        <button class="shape-options" id="circle"> <img src="circle.png" /> </button>
+                        <button class="shape-options" id="circle"> <img src="circle_green (Custom).png" /> </button>
                     </div>
 
                     <div className="shape-item">
-                        <button class="shape-options" id="triangle"> <img src="triangle.png" /> </button>
+                        <button class="shape-options" id="triangle"> <img src="triangle_green (Custom).png" /> </button>
                     </div>
 
                     <div className="shape-item">
-                        <button class="shape-options" id="line"> <img src="line.png" /> </button>
+                        <button class="shape-options" id="line"> <img src="line-green (Custom).png" /> </button>
                     </div>
                 </div>
 

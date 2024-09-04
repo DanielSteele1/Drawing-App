@@ -142,10 +142,10 @@ a {
 .shape-options {
 
   height: 60px;
-  width: 65px;
+  width: 60px;
   margin: 0 auto;
-  background-color: white;
-  border: 2px solid rgb(9, 179, 9);
+  background-color: transparent;
+  border: 1px solid rgb(9, 179, 9);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
@@ -154,7 +154,7 @@ a {
 
 .shape-options:hover {
 
-  background-color: rgb(103, 191, 218);
+  background-color: rgb(12, 177, 53);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   transition: 0.2s;
   cursor: pointer;
@@ -186,7 +186,6 @@ a {
   outline: none;
   color:rgb(5, 196, 5);
   transition: opacity .2s;
-
 
 }
 
@@ -275,7 +274,6 @@ a {
   border-radius: 5px;
   margin-bottom: 10px;
 
-
 }
 
 .redo-button:hover, .undo-button:hover {
@@ -306,7 +304,7 @@ a {
   display: flex;
   height: 75px;
   margin: 0px auto;
-  font-size: 18px;
+  font-size: 17px;
   font-family: "Inconsolata", monospace;
   padding: 10px;
   color: rgb(5, 196, 5);
