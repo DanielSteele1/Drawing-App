@@ -37,7 +37,7 @@ function App() {
         <div className="footer-3">
           <span>Connect with me!</span>
           <a href="https://github.com/DanielSteele1">
-            <img className="socials" src="github-logo.png"></img>
+            <img className="socials" src="github-logo.png" alt=""></img>
           </a>
           <a href="https://www.linkedin.com/in/daniel-steele-b06443198/">
             <img className="socials" src="linkedin.png"></img>

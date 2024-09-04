@@ -317,9 +317,8 @@ a {
 }
 
 .footer-1, .footer-2, .footer-3 {
-  flex:1;
+  flex:0.23;
   margin: 10px;
   padding: 10px;
   vertical-align:middle;
 }
-
