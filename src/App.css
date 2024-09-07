@@ -4,7 +4,6 @@ body {
 
 }
 
-
 a {
 
   font-family: "Inconsolata", monospace;
@@ -14,6 +13,31 @@ a {
 
 
 }
+
+h2 {
+
+  font-family: "Inconsolata", monospace;
+  font-size: 23px;
+  color: rgb(5, 196, 5);
+  text-align: center;
+}
+
+
+
+label {
+
+  font-family: "Inconsolata", monospace;
+  font-size: 15px;
+  color: rgb(5, 196, 5);
+
+}
+.undoredo {
+
+  display: grid;
+  height: 50px;
+  width: 50px;
+}
+
 
 .navigation {
 
@@ -62,59 +86,43 @@ a {
 
 .shapes {
 
-  text-align:center;
-  display: grid;
+  display:grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: fit-content;
-  width: fit-content;
-  margin: 0 auto;
 }
+
 
 .shape-item {
   margin: 0 auto;
-  margin: 5px;
-
+  padding: 10px;
+  align-items:center;
 }
 
+.shape-options {
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.shape-options img {
+  width: 50px; 
+  height: 50px; 
+}
 
 .menu-items {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: fit-content;
-  width: fit-content;
-  margin: 0 auto;
-
 }
 
 .menu-item {
 
-  height: fit-content;
-  width: fit-content;
-  margin: 0 auto;
-  padding: 10px;
   font-family: "Inconsolata", monospace;
   color:rgb(5, 196, 5);
-
   font-size: 18px;
   font-style: bold;
-  text-align: center;
 
-}
-
-.menu-options-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  align-items: center;
-  position: relative;
 }
 
 .menu-options {
@@ -130,14 +138,7 @@ a {
 
 }
 
-.menu-options:hover {
-  font: white;
-  text-decoration: underline;
-  font-size: 17px;
-  font-weight: bold;
-  text-align: center;
-  border: none;
-}
+
 
 .shape-options {
 
@@ -178,11 +179,11 @@ a {
 
 #lineWidth{
 
-  -webkit-appearance: none; /* Remove default styling */
+  -webkit-appearance: none; 
   appearance: none;
   width: 100%;
-  height: 8px; /* Adjust the height as needed */
-  background: #ddd; /* Default background color */
+  height: 8px; 
+  background: #ddd; 
   outline: none;
   color:rgb(5, 196, 5);
   transition: opacity .2s;
@@ -200,28 +201,29 @@ a {
 
 #lineWidth::-webkit-slider-runnable-track {
   width: 100%;
-  height: 8px; /* Adjust the height as needed */
-  background: rgb(5, 196, 5); /* Track color */
-  border-radius: 5px; /* Rounded corners */
-  border: 1px solid #000; /* Border color */
+  height: 8px; 
+  background: rgb(5, 196, 5); 
+  border-radius: 5px; 
+  border: 1px solid #000; 
 }
 
 #lineWidth::-moz-range-track {
   width: 100%;
-  height: 8px; /* Adjust the height as needed */
-  background: rgb(5, 196, 5); /* Track color */
-  border-radius: 5px; /* Rounded corners */
-  border: 1px solid #000; /* Border color */
+  height: 8px; 
+  background: rgb(5, 196, 5); 
+  border-radius: 5px; 
+  border: 1px solid #000; 
 }
 
 
 .menu-button {
 
+
   height: 40px;
   width: fit-content;
   margin: 0px auto;
   padding: 10px;
-  font-size: 17px;
+  font-size: 15px;
   background-color: rgb(9, 179, 9);
   border: none;
   border-radius: 5px;

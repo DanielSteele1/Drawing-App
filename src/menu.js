@@ -18,7 +18,7 @@ function Menu() {
             });
         };
 
-        
+
 
     }, []);
 
@@ -28,16 +28,16 @@ function Menu() {
         <div className="menu">
 
             <div className="progress-buttons">
-                <button class="undo-button" id="undo"> Undo </button>
-                <button class="redo-button" id="redo"> Redo </button>
+                <button class="undo-button" id="undo"> <img class="undoredo "src="undo.png"></img> </button>
+                <button class="redo-button" id="redo"> <img class="undoredo" src="redo.png"></img> </button>
             </div>
 
             <div className="menu-items">
 
-                <label> Brush Options </label>
+                <h2> Brush Options </h2>
 
                 <div className="menu-item">
-                    <label> Color: </label>
+                    <label> Brush Colour </label>
                     <br></br>
                     <input type="color" class="color" id="stroke" />
                     <br></br>
@@ -59,24 +59,27 @@ function Menu() {
                 </div>
 
 
-                <div className="shapes">
-                    <label> Shapes </label>
-                    <br></br>
-                    <div className="shape-item">
-                        <button class="shape-options" id="square"> <img src="square_green (Custom).png" /> </button>
+                <div className="menu-item">
+                <h2> Fill Colour </h2>
+
+                    <div className="shapes">
+                        <div className="shape-item">
+                            <button class="shape-options" id="square"> <img src="square_green (Custom).png" /> </button>
+                        </div>
+
+                        <div className="shape-item">
+                            <button class="shape-options" id="circle"> <img src="circle_green (Custom).png" /> </button>
+                        </div>
+
+                        <div className="shape-item">
+                            <button class="shape-options" id="triangle"> <img src="triangle_green (Custom).png" /> </button>
+                        </div>
+
+                        <div className="shape-item">
+                            <button class="shape-options" id="line"> <img src="line-green (Custom).png" /> </button>
+                        </div>
                     </div>
 
-                    <div className="shape-item">
-                        <button class="shape-options" id="circle"> <img src="circle_green (Custom).png" /> </button>
-                    </div>
-
-                    <div className="shape-item">
-                        <button class="shape-options" id="triangle"> <img src="triangle_green (Custom).png" /> </button>
-                    </div>
-
-                    <div className="shape-item">
-                        <button class="shape-options" id="line"> <img src="line-green (Custom).png" /> </button>
-                    </div>
                 </div>
 
                 <div className="menu-item">
