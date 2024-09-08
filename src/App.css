@@ -218,19 +218,20 @@ label {
 
 .menu-button {
 
-
+  display: flex;
   height: 40px;
-  width: fit-content;
-  margin: 0px auto;
   padding: 10px;
-  font-size: 15px;
+  font-size: 16px;
+  margin: 5px auto;
   background-color: rgb(9, 179, 9);
   border: none;
   border-radius: 5px;
-  color: white;
+  color: black;
   margin-bottom: 10px;
 
 }
+
+
 
 .menu-button:hover {
 

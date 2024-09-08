@@ -82,10 +82,9 @@ function Menu() {
 
                 </div>
 
-                <div className="menu-item">
+                <div className="buttons">
                     <button class="menu-button" id="clear"> Clear Canvas </button>
-                    <br></br>
-                    <button class="menu-button" id="save"> Save As Image </button>
+                    <button class="menu-button" id="save"> Save Image </button>
 
                 </div>
 
