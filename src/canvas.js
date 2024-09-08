@@ -28,6 +28,7 @@ function Canvas() {
         const strokes = [];
         const redoStack = [];
         let currentStroke = [];
+        let originalStrokeStyle = ctx.strokeStyle;
 
 
         const draw = (e) => {
@@ -58,7 +59,7 @@ function Canvas() {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            ctx.clearRect(0,0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             redrawCanvas();
 
             ctx.beginPath();
@@ -70,7 +71,7 @@ function Canvas() {
 
                 case 'triangle':
 
-                    ctx.moveTo(startX,startY);
+                    ctx.moveTo(startX, startY);
                     ctx.lineTo(x, y);
                     ctx.lineTo(startX - (x - startX), y);
                     ctx.closePath();
@@ -79,9 +80,9 @@ function Canvas() {
 
                 case 'circle':
 
-                const radius = Math.sqrt(Math.pow(x - startX, 2) + Math.pow(y - startY, 2));
-                ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
-                break;
+                    const radius = Math.sqrt(Math.pow(x - startX, 2) + Math.pow(y - startY, 2));
+                    ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+                    break;
 
                 default:
                     break;
@@ -145,6 +146,22 @@ function Canvas() {
             redoButton.addEventListener("click", redo);
         }
 
+
+        menu.addEventListener('change', e => {
+
+            if (e.target.id === 'stroke') {
+                ctx.strokeStyle = e.target.value;
+                originalStrokeStyle = e.target.value;
+            }
+
+            if (e.target.id === 'lineWidth') {
+                lineWidth = e.target.value;
+
+            }
+
+
+        });
+
         // clear button 
 
         menu.addEventListener('click', e => {
@@ -152,20 +169,17 @@ function Canvas() {
             if (e.target.id === 'clear') {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 strokes.length = 0;
-                redoStack.legnth = 0; // clear arrays
+                redoStack.length = 0; // clear arrays
                 currentStroke.length = 0;
             }
-        });
 
-        menu.addEventListener('change', e => {
-
-            if (e.target.id === 'stroke') {
-                ctx.strokeStyle = e.target.value;
-            }
-
-            if (e.target.id === 'lineWidth') {
-                lineWidth = e.target.value;
-
+            if (e.target.id === "eraser") {
+                if (e.target.checked) {
+                    ctx.strokeStyle = "white";
+                }
+                else {
+                    ctx.strokeStyle = originalStrokeStyle;
+                }
             }
         });
 
@@ -184,7 +198,6 @@ function Canvas() {
             ctx.stroke();
             strokes.push(currentStroke); // save the current stroke - push to array
             ctx.beginPath(); // end line
-
         });
 
         canvas.addEventListener('mousemove', draw);
